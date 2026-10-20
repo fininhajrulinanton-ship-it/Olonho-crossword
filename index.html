@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивные кроссворды о якутском героическом эпосе Олонхо.">
+  <title>Олонхо — мир якутского эпоса</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">Интерактивный учебный проект</p>
+    <h1>Олонхо</h1>
+    <p class="lead">Разгадывай кроссворды, узнавай героев и открывай мир якутского героического эпоса.</p>
+    <nav aria-label="Основная навигация">
+      <a href="#about">Об эпосе</a><a href="#crosswords">Кроссворды</a><a href="#dictionary">Словарик</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro" id="about">
+      <article class="panel">
+        <h2>Что такое Олонхо?</h2>
+        <p><strong>Олонхо</strong> — традиция якутского героического эпоса народа саха. Сказители-олонхосуты исполняли большие эпические произведения, передавая их из поколения в поколение.</p>
+        <p>В олонхо встречаются герои-защитники, волшебные существа и представления о Верхнем, Среднем и Нижнем мирах. В произведениях отражаются идеи добра, долга, природы и устройства мира.</p>
+      </article>
+      <aside class="fact"><strong>Интересный факт</strong><p>В 2005 году ЮНЕСКО провозгласила якутский героический эпос Олонхо шедевром устного и нематериального наследия человечества. В 2008 году он был включён в Репрезентативный список нематериального культурного наследия человечества.</p></aside>
+    </section>
+
+    <section id="crosswords">
+      <h2 class="section-title">Пять уровней кроссвордов</h2>
+      <p class="muted">Выбери уровень, затем вопрос. Вписывай ответы заглавными или строчными буквами.</p>
+      <div class="level-tabs" id="levelTabs" role="tablist" aria-label="Уровни"></div>
+      <div class="game-layout">
+        <section class="panel board-panel">
+          <div class="level-heading"><div><p class="eyebrow dark">ТЕКУЩИЙ УРОВЕНЬ</p><h2 id="levelTitle">Уровень 1</h2></div><span id="levelBadge" class="level-badge">1 / 5</span></div>
+          <div class="grid-scroll"><div id="crossword" class="crossword" aria-label="Сетка кроссворда"></div></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <p id="progressText" class="muted small">Заполнено клеток: 0</p>
+          <div class="actions">
+            <button class="primary" id="checkBtn">Проверить</button>
+            <button class="gold" id="hintBtn">Подсказка</button>
+            <button class="secondary" id="answersBtn">Показать ответы</button>
+            <button class="secondary" id="resetBtn">Сбросить</button>
+          </div>
+          <p id="feedback" class="feedback" aria-live="polite"></p>
+        </section>
+        <aside class="panel clues-panel">
+          <h2>Вопросы</h2>
+          <h3>По горизонтали</h3><ol id="acrossClues"></ol>
+          <h3>По вертикали</h3><ol id="downClues"></ol>
+          <p class="muted small">Нажми на вопрос, чтобы выделить слово в сетке.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="dictionary">
+      <h2 class="section-title">Мини-словарик</h2>
+      <p class="muted">Основные понятия, которые встречаются в заданиях.</p>
+      <div class="dictionary">
+        <article class="word-card"><h3>Олонхо</h3><p>Якутский героический эпос и традиция его исполнения.</p></article>
+        <article class="word-card"><h3>Олонхосут</h3><p>Сказитель, исполняющий олонхо.</p></article>
+        <article class="word-card"><h3>Саха</h3><p>Самоназвание якутского народа.</p></article>
+        <article class="word-card"><h3>Эпос</h3><p>Повествовательное произведение о героях и событиях.</p></article>
+        <article class="word-card"><h3>Богатырь</h3><p>Могучий герой, совершающий подвиги.</p></article>
+        <article class="word-card"><h3>Наследие</h3><p>Культурные ценности и традиции, передаваемые поколениям.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer>Олонхо — живая память и культурное наследие народа саха.</footer>
+</body>
+</html>
