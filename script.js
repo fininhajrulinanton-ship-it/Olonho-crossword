@@ -8,7 +8,11 @@ let world=[],player,objects=[],enemies=[],fires=[],traps=[],running=false,day=1,
 const rand=(a,b)=>Math.random()*(b-a)+a, choice=a=>a[Math.floor(Math.random()*a.length)], clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 function say(t){$('log').textContent=t;$('toast').textContent=t;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),1900)}
 function reset(){
-  Object.keys(inv).forEach(k=>inv[k]=0);inv.berry=3;
+  Object.keys(inv).forEach(k=>inv[k]=0);
+
+inv.berry = 3;
+inv.wood = 3;
+inv.stone = 2;
   player={x:W/2,y:H/2,r:11,hp:100,hunger:100,sanity:100,warmth:100,speed:155,axe:false};
   objects=[];enemies=[];fires=[];traps=[];kills=0;day=1;minute=7*60;gameTime=0;
   world=Array.from({length:ROWS},()=>Array.from({length:COLS},()=>Math.random()<.13?'water':'grass'));
