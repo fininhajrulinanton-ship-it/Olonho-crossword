@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дикие земли — игра на выживание</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-shell">
+    <header>
+      <div class="brand">ДИКИЕ ЗЕМЛИ <span>выживание начинается здесь</span></div>
+      <div class="top-help">WASD — движение · E — действие · 1/2/3 — предметы · C — костёр</div>
+    </header>
+    <main>
+      <section id="stage-wrap">
+        <canvas id="game" width="960" height="600"></canvas>
+        <div id="toast"></div>
+        <div id="start-screen">
+          <div class="card">
+            <div class="eyebrow">ОДИН НА ОДИН С ДИКОЙ ПРИРОДОЙ</div>
+            <h1>Дикие земли</h1>
+            <p>Собирай ресурсы, добывай еду и переживи ночи. В темноте лес становится опаснее.</p>
+            <button id="start-btn">Начать выживание</button>
+            <small>Управление: WASD · E · 1/2/3 · C</small>
+          </div>
+        </div>
+        <div id="game-over" class="hidden">
+          <div class="card">
+            <div class="eyebrow">ПУТЕШЕСТВИЕ ОКОНЧЕНО</div>
+            <h1>Ты не выжил…</h1>
+            <p id="death-reason">Дикая природа оказалась сильнее.</p>
+            <button id="restart-btn">Попробовать снова</button>
+          </div>
+        </div>
+      </section>
+      <aside>
+        <section class="panel">
+          <h2>СОСТОЯНИЕ</h2>
+          <div class="stat"><span>❤️ Здоровье</span><b id="health-text">100</b></div><div class="bar"><i id="health-bar"></i></div>
+          <div class="stat"><span>🍖 Голод</span><b id="hunger-text">100</b></div><div class="bar"><i id="hunger-bar"></i></div>
+          <div class="stat"><span>🧠 Рассудок</span><b id="sanity-text">100</b></div><div class="bar"><i id="sanity-bar"></i></div>
+          <div class="stat"><span>🌡️ Тепло</span><b id="warmth-text">100</b></div><div class="bar"><i id="warmth-bar"></i></div>
+        </section>
+        <section class="panel">
+          <h2>МИР</h2>
+          <div class="world-line"><span>Время</span><b id="time-text">День 1 · Утро</b></div>
+          <div class="world-line"><span>Температура</span><b id="weather-text">Прохладно</b></div>
+          <div class="world-line"><span>Убийств</span><b id="kills-text">0</b></div>
+        </section>
+        <section class="panel">
+          <h2>ИНВЕНТАРЬ</h2>
+          <div class="inventory" id="inventory"></div>
+          <p class="hint">Выбери предмет клавишей 1, 2 или 3. Еда восстанавливает голод.</p>
+        </section>
+        <section class="panel">
+          <h2>СОЗДАНИЕ</h2>
+          <button class="craft" id="craft-fire">🔥 Костёр <small>5 дерева + 3 камня</small></button>
+          <button class="craft" id="craft-axe">🪓 Топор <small>3 дерева + 2 камня</small></button>
+          <button class="craft" id="craft-trap">🪤 Ловушка <small>4 ветки + 2 травы</small></button>
+          <p class="hint">Костёр согревает и защищает от ночных существ.</p>
+        </section>
+        <section class="panel log-panel">
+          <h2>ДНЕВНИК</h2><div id="log">Ты просыпаешься на опушке. Нужно найти еду и укрытие.</div>
+        </section>
+      </aside>
+    </main>
+    <footer>Маленькая браузерная игра о выживании · Мир генерируется заново при каждом старте</footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
