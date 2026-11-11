@@ -4,16 +4,15 @@ const W=canvas.width,H=canvas.height,T=40,COLS=24,ROWS=15;
 const $=id=>document.getElementById(id);
 const keys={}, inv={wood:0,stone:0,twig:0,grass:0,berry:2,meat:0};
 const labels={wood:['🪵','Дерево'],stone:['🪨','Камень'],twig:['🌿','Ветка'],grass:['🍃','Трава'],berry:['🫐','Ягоды'],meat:['🍖','Мясо']};
-let world=[],player,objects=[],enemies=[],fires=[],traps=[],running=false,day=1,minute=7*60,kills=0,selected='berry',last=0,toastTimer=0,gameTime=0;
+let world=[],player,objects=[],enemies=[],fires=[],traps=[],running=false,day=1,minute=1*60,kills=0,selected='berry',last=0,toastTimer=0,gameTime=0;
 const rand=(a,b)=>Math.random()*(b-a)+a, choice=a=>a[Math.floor(Math.random()*a.length)], clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 function say(t){$('log').textContent=t;$('toast').textContent=t;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),1900)}
 function reset(){
   Object.keys(inv).forEach(k=>inv[k]=0);
-
-inv.berry = 3;
-inv.wood = 3;
-inv.stone = 2;
-  player={x:W/2,y:H/2,r:11,hp:100,hunger:100,sanity:100,warmth:100,speed:155,axe:false};
+inv.berry = 5;
+inv.wood = 10;
+inv.stone = 60;
+  player={x:W/2,y:H/2,r:11,hp:150,hunger:50,sanity:100,warmth:100,speed:255,axe:false};
   objects=[];enemies=[];fires=[];traps=[];kills=0;day=1;minute=7*60;gameTime=0;
   world=Array.from({length:ROWS},()=>Array.from({length:COLS},()=>Math.random()<.13?'water':'grass'));
   for(let i=0;i<65;i++){let x=rand(30,W-30),y=rand(30,H-30);if(Math.hypot(x-player.x,y-player.y)>65)objects.push({x,y,type:choice(['tree','tree','rock','bush','twig','grass']),r:choice([12,14,16]),alive:true})}
@@ -22,7 +21,7 @@ inv.stone = 2;
 }
 function nearObj(){let best=null,d=48;for(const o of objects){if(!o.alive)continue;let n=Math.hypot(o.x-player.x,o.y-player.y);if(n<d){d=n;best=o}}return best}
 function interact(){let o=nearObj();if(!o){say('Рядом нет ресурсов. Подойди ближе.');return}
-  if(o.type==='tree'){if(!player.axe){say('Нужен топор. Создай его в меню.');return}inv.wood+=2;inv.twig+=1;say('Ты срубил дерево: +2 дерева, +1 ветка.')}
+  if(o.type==='tree'){if(!player.axe){say('Нужен топор. Создай его в меню.');return}inv.wood+=2;inv.twig+=1;say('Ты срубил дерево: +5 дерева, +5 ветка.')}
   if(o.type==='rock'){inv.stone+=2;say('Ты подобрал камни: +2 камня.')}
   if(o.type==='bush'){inv.berry+=2;say('Ты собрал ягоды: +2 ягоды.')}
   if(o.type==='twig'){inv.twig+=2;say('Собраны ветки: +2.')}
