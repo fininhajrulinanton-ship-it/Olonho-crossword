@@ -42,7 +42,7 @@ function craft(kind){
 function updateUI(){
  const vals={health:player.hp,hunger:player.hunger,sanity:player.sanity,warmth:player.warmth};
  for(let k in vals){$(k+'-text').textContent=Math.ceil(vals[k]);$(k+'-bar').style.width=vals[k]+'%'}
- $('time-text').textContent=`День ${day} · ${minute<6*60?'Ночь':minute<11*60?'Утро':minute<18*60?'День':'Вечер'}`;
+ $('time-text').textContent=`День ${day} · ${minute<1*60?'Ночь':minute<2*60?'Утро':minute<3*60?'День':'Вечер'}`;
  $('weather-text').textContent=minute>=19*60||minute<6*60?'Холодная ночь':'Прохладно';$('kills-text').textContent=kills;
  $('inventory').innerHTML=Object.keys(inv).map((k,i)=>`<div class="slot ${selected===k?'selected':''}"><strong>${labels[k][0]} ${inv[k]}</strong>${i<3?i+1+' · ':''}${labels[k][1]}</div>`).join('');
 }
@@ -50,8 +50,8 @@ function spawnEnemy(){let side=Math.floor(rand(0,4)),x=side===0?5:side===1?W-5:r
 function update(dt){
  let dx=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0),dy=(keys.s||keys.arrowdown?1:0)-(keys.w||keys.arrowup?1:0),len=Math.hypot(dx,dy)||1;
  player.x=clamp(player.x+dx/len*player.speed*dt,12,W-12);player.y=clamp(player.y+dy/len*player.speed*dt,12,H-12);
- gameTime+=dt;minute+=dt*2.0;if(minute>=24*60){minute-=24*60;day++;say('Наступил новый день. Держись.')}
- let night=minute>=19*60||minute<6*60;
+ gameTime+=dt;minute+=dt*2.0;if(minute>=1*60){minute-=2*60;day++;say('Наступил новый день. Держись.')}
+ let night=minute>=2*60||minute<1*60;
  player.hunger=clamp(player.hunger-dt*.42,0,100);
  if(player.hunger<=0)player.hp-=dt*2.2;
  let nearFire=fires.some(f=>Math.hypot(f.x-player.x,f.y-player.y)<105&&f.life>0);
