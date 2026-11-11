@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box}body{margin:0;background:#171b17;color:#e9e1c9;font-family:Inter,Arial,sans-serif}
+#game-shell{max-width:1380px;margin:0 auto;padding:18px}
+header{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px;padding:8px 4px}
+.brand{font-family:'Roboto Slab',serif;font-size:22px;font-weight:800;letter-spacing:2px;color:#e6c77a}.brand span{display:block;font:11px Inter,sans-serif;letter-spacing:2px;color:#a5a58c;margin-top:3px}
+.top-help{font-size:12px;color:#a9b09b}
+main{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:14px;align-items:start}
+#stage-wrap{position:relative;min-width:0;border:3px solid #444b36;border-radius:8px;overflow:hidden;background:#263c2b;box-shadow:0 12px 40px #0008}
+canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
+aside{display:flex;flex-direction:column;gap:10px}
+.panel{background:#272d25;border:1px solid #48503c;border-radius:7px;padding:13px 14px;box-shadow:0 4px 12px #0003}
+.panel h2{font:700 12px 'Roboto Slab',serif;letter-spacing:1.5px;color:#d7bd78;margin:0 0 12px}
+.stat,.world-line{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin:8px 0 5px;color:#d5d6c5}.stat b,.world-line b{color:#fff1cb}
+.bar{height:7px;background:#131813;border-radius:8px;overflow:hidden;margin-bottom:9px}.bar i{display:block;height:100%;width:100%;background:#9bb66a;transition:width .2s}
+#health-bar{background:#c66b55}#hunger-bar{background:#d5a34f}#sanity-bar{background:#8299c0}#warmth-bar{background:#d47b42}
+.inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slot{border:1px solid #555c45;background:#1d241e;border-radius:5px;padding:7px 4px;text-align:center;min-height:55px;font-size:11px;color:#d5d6c5}
+.slot strong{display:block;font-size:17px;margin-bottom:3px}.slot.selected{border:2px solid #d9bd72;background:#353a27}
+.hint{font-size:10px;line-height:1.5;color:#999f8c;margin:9px 0 0}
+.craft{width:100%;text-align:left;background:#343d2e;border:1px solid #566247;color:#f0e7cd;border-radius:4px;padding:8px 9px;margin:3px 0;cursor:pointer;font:600 12px Inter}
+.craft:hover{background:#46533a}.craft small{display:block;color:#b6b99e;font-weight:400;margin:4px 0 0 24px}
+#log{font-size:11px;line-height:1.55;color:#c4c8b2;min-height:52px}
+footer{text-align:center;color:#737b69;font-size:10px;padding:13px}
+#toast{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:#171d18dd;border:1px solid #b69b5c;color:#f1dfad;padding:8px 14px;border-radius:5px;font-size:12px;opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.show{opacity:1}
+#start-screen,#game-over{position:absolute;inset:0;display:grid;place-items:center;background:#101710c9;z-index:5}
+.hidden{display:none!important}.card{max-width:440px;margin:20px;padding:30px;background:#293327;border:1px solid #8b875b;border-radius:8px;text-align:center;box-shadow:0 15px 45px #0009}
+.eyebrow{font-size:10px;letter-spacing:2px;color:#cdb66f}.card h1{font:800 38px 'Roboto Slab',serif;color:#e9d18b;margin:12px 0}.card p{font-size:13px;line-height:1.6;color:#d2d5c3}.card button{margin:12px 0;background:#bd9651;border:0;border-radius:4px;padding:12px 24px;color:#1d2119;font-weight:800;cursor:pointer}.card small{display:block;color:#aab09a;font-size:10px}
+@media(max-width:900px){main{grid-template-columns:1fr}aside{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.log-panel{grid-column:span 2}.top-help{display:none}}
+@media(max-width:560px){#game-shell{padding:8px}aside{grid-template-columns:1fr}.log-panel{grid-column:auto}.brand{font-size:18px}}
